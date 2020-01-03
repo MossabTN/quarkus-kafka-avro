@@ -8,7 +8,7 @@
   <properties>
     <surefire-plugin.version>2.22.1</surefire-plugin.version>
     <compiler-plugin.version>3.8.1</compiler-plugin.version>
-    <quarkus.version>1.0.0.CR1</quarkus.version>
+    <quarkus.version>1.1.0.Final</quarkus.version>
     <maven.compiler.source>1.8</maven.compiler.source>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.target>1.8</maven.compiler.target>
@@ -24,14 +24,24 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
+  
+
+ <repositories>
+
+  <repository>
+    <id>confluent</id>
+    <url>http://packages.confluent.io/maven/</url>
+  </repository>
+
+  <!-- further repository entries here -->
+
+</repositories>
+ 
+  
   <dependencies>
     <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-resteasy</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-smallrye-reactive-messaging-kafka</artifactId>
     </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
@@ -44,9 +54,9 @@
       <version>1.9.1</version>
     </dependency>
     <dependency>
-      <groupId>io.confluent</groupId>
-      <artifactId>kafka-avro-serializer</artifactId>
-      <version>5.1.0</version>
+	<groupId>io.confluent</groupId>
+	<artifactId>kafka-avro-serializer</artifactId>
+	<version>5.3.2</version>
     </dependency>
     <dependency>
       <groupId>org.codehaus.jackson</groupId>
@@ -177,7 +187,7 @@
       </build>
       <properties>
         <quarkus.package.type>native</quarkus.package.type>
-        <quarkus.native.additional-build-args>-H:ResourceConfigurationFiles=${project.basedir}/resources-config.json,-H:ReflectionConfigurationFiles=${project.basedir}/reflection-config.json</quarkus.native.additional-build-args>
+	    <quarkus.native.additional-build-args>-H:ResourceConfigurationFiles=${project.basedir}/resources-config.json,-H:ReflectionConfigurationFiles=${project.basedir}/META-INF/native-image/reflect-config.json</quarkus.native.additional-build-args>
       </properties>
     </profile>
   </profiles>
