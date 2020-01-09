@@ -5,7 +5,11 @@ This project illustrates how you can interact with Apache Kafka using MicroProfi
 
 ## Kafka cluster
 
-First you need a Kafka cluster and schema registry. You can follow the instructions from the [Confluent Docker Image for Schema Registry](https://hub.docker.com/r/confluentinc/cp-schema-registry/) or run `./src/main/docker/docker-compose up` if you have docker installed on your machine.
+First you need a Kafka cluster and schema registry. You can follow the instructions from the [Confluent Docker Image for Schema Registry](https://hub.docker.com/r/confluentinc/cp-schema-registry/) or run 
+```bash 
+./src/main/docker/docker-compose up -d
+```   
+if you have docker installed on your machine.
 
 ## Start the application
 
@@ -19,13 +23,14 @@ Then, open your browser to `http://localhost:8080/notifications/notify`, to send
 
 ## Running in native
 
-You can compile the application into a native binary using (NOT WORKING):
+You can compile the application into a native binary using:
 
-`mvn clean package -Pnative`
+```bash
+./mvnw clean package -Pnative
+``` 
 
 and run with:
 
-`./target/kafka-quickstart-1.0-SNAPSHOT-runner` 
-
-## TODO
-fix build native
+```bash
+./target/kafka-quickstart-1.0-SNAPSHOT-runner
+``` 
